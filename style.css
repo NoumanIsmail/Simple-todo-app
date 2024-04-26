@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik Mono One', monospace;
+  text-align: center;
+}
+h1 {
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  text-shadow: 0px 0px 4px;
+}
+main {
+  width: 70%;
+  height: 90vh;
+  margin: auto;
+  margin-top: 20px;
+}
+form {
+  width: 80%;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  background: #ecebeb;
+  padding: 10px;
+  outline: none;
+  margin: 10px 0px;
+  font-size: 22px;
+}
+input:hover {
+  box-shadow: 0px 0px 5px rgb(63, 63, 63);
+}
+input:focus {
+  box-shadow: 0px 0px 5px rgb(63, 63, 63);
+}
+.bottom-navigation-bar {
+  width: 100%;
+}
+.bottom-navigation-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.bottom-navigation-bar ul li {
+  border: 1px solid;
+  width: 100%;
+  background-color: #28a745;
+}
+
+.bottom-navigation-bar ul li i {
+  font-size: 27px;
+  margin: 13px;
+}
+.bottom-navigation-bar ul li a {
+  text-decoration: none;
+  display: none;
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+}
+.bottom-navigation-bar ul li:hover a {
+  display: block;
+  transition: 0.5s all;
+}
+.bottom-navigation-bar ul li:hover i {
+  display: none;
+}
+table {
+  width: 98%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+th {
+  border: 3px solid;
+  padding: 3px;
+  background-color: #5cb85c;
+}
+td {
+  border: 2px solid;
+  padding: 5px 0px;
+  background-color: #9dd49d;
+  font-weight: 100;
+}
+.modal-form {
+  height: auto;
+}
