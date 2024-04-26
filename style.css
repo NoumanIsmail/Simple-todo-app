@@ -7,6 +7,10 @@
   font-family: 'Rubik Mono One', monospace;
   text-align: center;
 }
+#errorMessage{
+  color: red;
+  font-size: 1.3rem;
+}
 h1 {
   font-family: 'Rubik Doodle Shadow', system-ui;
   text-shadow: 0px 0px 4px;
