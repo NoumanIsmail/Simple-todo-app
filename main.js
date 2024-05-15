@@ -1,17 +1,17 @@
-const todoForm = document.getElementById("todoForm");
+let todoForm = document.getElementById("todoForm");
 let mytitle = document.getElementById("myTitle");
 let mydesc = document.getElementById("myDesc");
 let showTodo = document.getElementById("showTodo");
-const mytaskId = new Date().getTime();
+let mytaskId = new Date().getTime();
+let myTasks = []
 
-const myTasks = []
 
 todoForm.addEventListener("submit",(e)=>{
     e.preventDefault()
     validateForm();
     
 })
-const validateForm = () =>{
+let validateForm = () =>{
     if(mytitle.value === ''){
         Toastify({
     text: "Title Can Not be Blank",
@@ -46,33 +46,41 @@ const validateForm = () =>{
   postData();
     }
 }
-const db = localStorage.setItem('db', JSON.stringify(myTasks)); 
-const postData = () =>{
+let postData = () =>{
   myTasks.push({
     title:mytitle.value,
     desc:mydesc.value,
     id:mytaskId,
     isCompleted:false
   });
-  getData();
+  let db = localStorage.setItem('db', JSON.stringify(myTasks)); 
+  mytitle.value = ''
+  mydesc.value = ''
+  location.reload()
 }
-const getData = () =>{
-  showTodo = '';
-  db.map((task,index)=>{
+let getData = () =>{
+  myTasks.map((task,index)=>{
     return( 
-    showTodo.innerHTML += `
-    <td>${index}</td>
-    <td>${task.title}</td>
-    <td>${task.desc}</td>
-    <td>${task.isCompleted}</td>
-    <td>${index}</td>
+      showTodo.innerHTML += `
+      <div class='mytodos'>
+      
+      <div class='title'><span>Title : </span> ${task.title}</div>
+      <div class='desc'><span>Description : </span> ${task.desc}</div>
+      <div class='isCompleted'><span>Status : </span>${task.isCompleted ? 'Completed':'Not Completed Yet'}</div>
+      <div class='action'>
+      <span>Actions : </span><i class='fa fa-trash' aria-hidden='true'></i><br>
+      <span>Actions : </span><i class='fa fa-pencil' aria-hidden='true'></i>
+    </div>
+    </div>
     `
     )
   });
-  db = JSON.parse(localStorage.getItem('db'))
-  console.log(db)
-  
 }
+
+  myTasks = JSON.parse(localStorage.getItem('db') ?? [])
+  getData();
+  console.log(myTasks)  
+
 
 
 

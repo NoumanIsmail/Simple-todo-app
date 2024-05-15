@@ -20,10 +20,11 @@ main {
   height: 90vh;
   margin: auto;
   margin-top: 20px;
+  overflow: hidden;
 }
 form {
   width: 80%;
-  height: 60vh;
+  height: 30vh;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -96,3 +97,51 @@ td {
 .modal-form {
   height: auto;
 }
+#showTodo{
+  border: 3px solid ;
+  border-radius: 6px;
+  height: 50vh;
+  width: 60%;
+  margin: auto;
+  overflow-y: scroll;
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  color: white;
+  }
+  #showTodo::-webkit-scrollbar {
+      display: none;
+  }
+  #showTodo .mytodos{
+      background-color: #28a745;
+      border: none;
+      border-bottom: 2px solid #00000093;
+      padding: 10px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-evenly;   
+      text-transform:capitalize ;
+      margin: 5px 0px;
+  }
+  .mytodos span{
+      color: black;
+      font-family:sans-serif ;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: capitalize;
+  }
+  .mytodos .title{
+      font-size: 1.1rem;
+      font-family: 'Rubik Doodle Shadow', system-ui;
+  }
+  .mytodos .desc{
+      font-family: 'Rubik Doodle Shadow', system-ui;
+      
+  }
+  .mytodos .isCompleted{
+      font-family: 'Rubik Doodle Shadow', system-ui;
+      
+  }
+  .mytodos .action{
+    font-family: 'Rubik Doodle Shadow', system-ui;
+      
+  }
