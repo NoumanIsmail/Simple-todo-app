@@ -117,7 +117,7 @@ td {
       padding: 10px 10px;
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: center;
       justify-content: space-evenly;   
       text-transform:capitalize ;
       margin: 5px 0px;
@@ -143,5 +143,20 @@ td {
   }
   .mytodos .action{
     font-family: 'Rubik Doodle Shadow', system-ui;
+    cursor: pointer;
       
   }
+.delete-btn{
+  padding: 5px 10px;
+  background: hsl(0, 100%, 70%);
+  border: 1px solid hsl(0, 0%, 50%)080;
+  border-radius: 5px;
+  color: black;
+}
+.update-btn{
+  padding: 5px 10px;
+  background: hsl(60, 100%, 70%);
+  border: 1px solid hsl(0, 0%, 50%)080;
+  border-radius: 5px;
+  color: black;
+}

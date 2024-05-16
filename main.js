@@ -64,22 +64,40 @@ let getData = () =>{
       showTodo.innerHTML += `
       <div class='mytodos'>
       
-      <div class='title'><span>Title : </span> ${task.title}</div>
-      <div class='desc'><span>Description : </span> ${task.desc}</div>
-      <div class='isCompleted'><span>Status : </span>${task.isCompleted ? 'Completed':'Not Completed Yet'}</div>
+      <div class='title'> ${task.title}</div>
+      <div class='desc'> ${task.desc}</div>
+      <div class='isCompleted'>${task.isCompleted ? 'Completed':'Not Completed Yet'}</div>
       <div class='action'>
-      <span>Actions : </span><i class='fa fa-trash' aria-hidden='true'></i><br>
-      <span>Actions : </span><i class='fa fa-pencil' aria-hidden='true'></i>
+      <i class='fa fa-trash delete-btn' aria-hidden='true' onClick="deleteTask(this)" ></i>&nbsp;&nbsp;&nbsp;
+      <i class='fa fa-pencil update-btn' aria-hidden='true' onClick="updateTask(this)" ></i>
     </div>
     </div>
     `
     )
   });
 }
+let deleteTask = (e)=>{
+  if(confirm("Do You Want To Delete Task")){
+    console.log(e.parentElement.parentElement)
+    let deletedTask = e.parentElement.parentElement.remove()
+    myTasks.splice(deletedTask,1);
+    localStorage.setItem('db', JSON.stringify(myTasks))
+}
+}
+let updateTask = (e)=>{
+  let selectedItem = e.parentElement.parentElement
+  mydesc.value = selectedItem.children[1].innerText
+  mytitle.value = selectedItem.children[0].innerText
+  myTasks.splice(selectedItem,1)
+  localStorage.setItem('db', JSON.stringify(myTasks));
+  
 
-  myTasks = JSON.parse(localStorage.getItem('db') ?? [])
+}
+(()=>{
+  myTasks = JSON.parse(localStorage.getItem('db') ?? [{msg:'Nothing to show'}])
   getData();
   console.log(myTasks)  
+})()
 
 
 
