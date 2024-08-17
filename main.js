@@ -1,6 +1,8 @@
 let todoForm = document.getElementById("todoForm");
 let mytitle = document.getElementById("myTitle");
 let mydesc = document.getElementById("myDesc");
+let myCheckbox = document.getElementById("myCheckbox")
+let displayCheckbox = document.getElementById('check-box')
 let showTodo = document.getElementById("showTodo");
 let mytaskId = new Date().getTime();
 let myTasks = []
@@ -58,24 +60,48 @@ let postData = () =>{
   mydesc.value = ''
   location.reload()
 }
-let getData = () =>{
-  myTasks.map((task,index)=>{
-    return( 
-      showTodo.innerHTML += `
-      <div class='mytodos'>
-      
-      <div class='title'> ${task.title}</div>
-      <div class='desc'> ${task.desc}</div>
-      <div class='isCompleted'>${task.isCompleted ? 'Completed':'Not Completed Yet'}</div>
-      <div class='action'>
-      <i class='fa fa-trash delete-btn' aria-hidden='true' onClick="deleteTask(this)" ></i>&nbsp;&nbsp;&nbsp;
-      <i class='fa fa-pencil update-btn' aria-hidden='true' onClick="updateTask(this)" ></i>
-    </div>
-    </div>
-    `
-    )
+let getData = () => {
+  showTodo.innerHTML = ''; // Clear previous tasks
+  myTasks.forEach((task, index) => {
+    showTodo.innerHTML += `
+      <div class='mytodos' id="${task.id}">
+        <div class='title'>${task.title}</div>
+        <div class='desc'>${task.desc}</div>
+        <div class='isCompleted' onClick="isCompleted(this)">
+          ${task.isCompleted ? 'Completed' : 'Not Completed Yet'}
+        </div>
+        <div class='action'>
+          <i class='fa fa-trash delete-btn' aria-hidden='true' onClick="deleteTask(this)"></i>&nbsp;&nbsp;&nbsp;
+          <i class='fa fa-pencil update-btn' aria-hidden='true' onClick="updateTask(this)"></i>
+        </div>
+      </div>
+    `;
   });
 }
+
+
+const isCompleted = (e) => {
+  // Identify the parent element of the clicked status
+  let selectedItem = e.parentElement
+  let taskId = selectedItem.id; // Get the ID of the task
+  
+  // Find the task in the myTasks array
+  let task = myTasks.find(task => task.id == taskId);
+  
+  if (task) {
+    // Toggle the isCompleted status
+    task.isCompleted = !task.isCompleted;
+    
+    // Update the local storage
+    localStorage.setItem('db', JSON.stringify(myTasks));
+    
+    // Refresh the display
+    showTodo.innerHTML = ''; // Clear the current display
+    getData(); // Re-populate the tasks
+  }
+}
+
+
 let deleteTask = (e)=>{
   if(confirm("Do You Want To Delete Task")){
     console.log(e.parentElement.parentElement)

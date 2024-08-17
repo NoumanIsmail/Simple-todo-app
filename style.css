@@ -139,7 +139,9 @@ td {
   }
   .mytodos .isCompleted{
       font-family: 'Rubik Doodle Shadow', system-ui;
-      
+      cursor: pointer;
+      display: flex;
+      align-items: center;
   }
   .mytodos .action{
     font-family: 'Rubik Doodle Shadow', system-ui;
